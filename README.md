@@ -1,6 +1,6 @@
 # Tiny World Builder
 
-This is a simplest-possible demo to build tiny worlds with. Included is a character with basic movement control, a Tiled project file and some a helper script (useImageCollections.js) to assist with the import of image collections that have been used in object layers.
+This is a simplest-possible demo to build tiny worlds with. Included is a character with basic movement control, a Tiled project file and a helper script (useImageCollections.js) to assist with the import of image collections that have been used in object layers.
 
 ##  🌺 useImageCollections.js
 
