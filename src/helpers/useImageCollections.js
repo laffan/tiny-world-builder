@@ -40,11 +40,12 @@ function loadSaveCollection(scene, collectionName, JSON) {
   if ( !tileset) {
     console.error(`loadSaveCollection.js cannot find "${collectionName}" tileset`)
   }
+
   // Save the collection to the global registry
   scene.registry.set(collectionName, tileset);
 
   // Load each image in the tileset to scene 
-  //with the filename as the key
+  // with the filename as the key
   tileset.tiles.map((tile) => {
     const key = tile.image.split("/").pop().split(".")[0];
     const url = tile.image;

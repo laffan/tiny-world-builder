@@ -30,7 +30,7 @@ class Level1_Pixel extends Phaser.Scene {
       const sprite = this.add.sprite(
         object.x,
         object.y,
-        // 🌺 Get the saved image collection from registry.
+        // 🌺 4. Get the saved image key from registry.
         getCollectionReference(this, "shapes", object.gid)
       );
       sprite.setOrigin(0, 1);
@@ -45,7 +45,7 @@ class Level1_Pixel extends Phaser.Scene {
       const sprite = this.add.sprite(
         object.x,
         object.y,
-        // 🌺 Get the saved image collection from registry.
+        // 🌺 4. Get the saved image key from registry.
         getCollectionReference(this, "shapes", object.gid)
       );
       sprite.setOrigin(0, 1);
@@ -61,7 +61,7 @@ class Level1_Pixel extends Phaser.Scene {
       const sprite = this.add.sprite(
         object.x,
         object.y,
-        // 🌺 Get the saved image collection from registry.
+        // 🌺 4. Get the saved image key from registry.
         getCollectionReference(this, "shapes", object.gid)
       );
       sprite.setOrigin(0, 1);

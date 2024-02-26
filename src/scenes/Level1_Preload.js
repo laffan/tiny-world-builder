@@ -16,11 +16,12 @@ class Level1_Preload extends Phaser.Scene {
 
     this.load.path = "./assets/level1_pixel/";
 
-    // 🌺 Save JSON path so we can use it for *both*  
-    // LoadJSON and this.load.tilemapTiledJSON()
+    // 🌺 1. Save JSON path so we can use it for *both*  
+    //       LoadJSON and this.load.tilemapTiledJSON()
     const JSONFilename = "level1_pixel.json";
 
-    // 🌺 Save JSON to the scene registry for use with loadSaveCollection
+    // 🌺 2. Save relevant sections of JSON to the scene registry, 
+    //       to be used later by loadSaveCollection()
     loadJSON(this, JSONFilename, this.load.path + JSONFilename);
 
     // Load tilemaps
@@ -35,7 +36,9 @@ class Level1_Preload extends Phaser.Scene {
       frameHeight: 32,
     });
 
-    // 🌺 Load in the image collection name from Tiled
+    // 🌺 3. Use saved JSON data in the registry to load
+    //       the individual files from an object collection and save
+    //       the keys in their own new array.
     loadSaveCollection(this, "shapes", this.registry.get(JSONFilename));
 
     this.load.on("complete", () => {
