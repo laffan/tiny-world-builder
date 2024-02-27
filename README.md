@@ -10,9 +10,9 @@ Basic usage is laid out in the code itself, denoted by numbered 🌺 emojis. You
 
 ## Pixel Res / High Res
 
-There are two playable versions of the project : pixel art version and high-res version.  The default is set to support pixel art, but if you would like to use high-res images do the following : 
+There are two playable versions of the project : a pixel art version and a high-res version.  Pixel art is the default, but if you would like to use high-res images do the following : 
 
-1. In the <head> of index.html comment out the pixel art lines and remove comments from the high-res lines : 
+1. In the `<head>` of index.html comment out the pixel art lines and remove comments from the high-res lines : 
 
 ```html
   <!-- <script src="./src/prefabs/PlayerPixel.js"></script>
