@@ -1,6 +1,6 @@
-class Level1_Pixel extends Phaser.Scene {
+class Level2_Highres extends Phaser.Scene {
   constructor() {
-    super("Level1_Pixel");
+    super("Level2_Highres");
   }
 
   create() {
@@ -8,18 +8,18 @@ class Level1_Pixel extends Phaser.Scene {
     this.keys = this.input.keyboard.createCursorKeys();
 
     // Create map
-    this.map = this.add.tilemap("level1_pixel_JSON");
+    this.map = this.add.tilemap("level2_highres_JSON");
 
     // Add tileset 
-    const grays_12px_tileset = this.map.addTilesetImage(
-      "grays_12px",
-      "grays_12px_img"
+    const grays_100px_tileset = this.map.addTilesetImage(
+      "grays_100px",
+      "grays_100px_img"
     );
 
     //-------------------------------------------------------------------------
     // BASE COLOR
 
-    this.map.createLayer("BaseColor", grays_12px_tileset, 0, 0);
+    this.map.createLayer("BaseColor", grays_100px_tileset, 0, 0);
 
     //-------------------------------------------------------------------------
     // BACKGROUND LAYER
@@ -31,7 +31,7 @@ class Level1_Pixel extends Phaser.Scene {
         object.x,
         object.y,
         // 🌺 4. Get the saved image key from registry.
-        getCollectionReference(this, "shapes", object.gid)
+        getCollectionReference(this, "shapes_highres", object.gid)
       );
       sprite.setOrigin(0, 1);
     });
@@ -46,7 +46,7 @@ class Level1_Pixel extends Phaser.Scene {
         object.x,
         object.y,
         // 🌺 4. Get the saved image key from registry.
-        getCollectionReference(this, "shapes", object.gid)
+        getCollectionReference(this, "shapes_highres", object.gid)
       );
       sprite.setOrigin(0, 1);
       sprite.setTint(0xd4d4d4);
@@ -62,7 +62,7 @@ class Level1_Pixel extends Phaser.Scene {
         object.x,
         object.y,
         // 🌺 4. Get the saved image key from registry.
-        getCollectionReference(this, "shapes", object.gid)
+        getCollectionReference(this, "shapes_highres", object.gid)
       );
       sprite.setOrigin(0, 1);
 
@@ -79,7 +79,7 @@ class Level1_Pixel extends Phaser.Scene {
 
     const platformLayer = this.map.createLayer(
       "Platforms",
-      grays_12px_tileset,
+      grays_100px_tileset,
       0,
       0
     );
@@ -95,16 +95,17 @@ class Level1_Pixel extends Phaser.Scene {
       .getObjectLayer("Positions")
       .objects.find((obj) => obj.name === "playerStart");
 
-    this.player = new PlayerPixel(this, startPos.x, startPos.y, "player", 0, "idle");
+    this.player = new PlayerHighres(this, startPos.x, startPos.y, "player", 0, "idle");
 
     // // Set up player collisions with platforms
     this.physics.add.collider(this.player, platformLayer);
 
     // Follow player with camera
-    this.cameras.main.startFollow(this.player, true, 1, 1, 0, 20);
+    this.cameras.main.startFollow(this.player, true, 1, 1, 0, 0);
+    this.cameras.main.startFollow(this.player, true, 1, 1, -100, 0);
 
     // Set zoom & pan camera
-    this.cameras.main.setZoom(4);
+    // this.cameras.main.setZoom(0);
     this.cameras.main.setBounds(
       0,
       0,
@@ -125,8 +126,5 @@ class Level1_Pixel extends Phaser.Scene {
 
   update() {
     this.playerFSM.step();
-    // Scroll the parallax layers
-
-    this.midgroundObjectLayer.tilePositionX = this.cameras.main.scrollX * 0.3;
   }
 }

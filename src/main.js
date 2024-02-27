@@ -20,6 +20,7 @@ const config = {
     // },
   },
   scene: [Level1_Preload, Level1_Pixel],
+  // scene: [Level2_Preload, Level2_Highres],
 };
 
 const game = new Phaser.Game(config);

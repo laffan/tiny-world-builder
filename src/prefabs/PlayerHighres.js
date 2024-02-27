@@ -1,14 +1,14 @@
-class Player extends Phaser.Physics.Arcade.Sprite {
+class PlayerHighres extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, texture, frame) {
     super(scene, x, y, texture, frame);
-    this.moveVelocity = 50;
-    this.jumpVelocity = 150;
+    this.moveVelocity = 300;
+    this.jumpVelocity = 350;
     this.canClimb = false;
 
     // Add to scene
     scene.add.existing(this); // Add to scene.
     this.setOrigin(0, 0); // center player on start point
-    this.setScale(0.5)
+    this.setScale(5)
 
     // Physics setup
     scene.physics.add.existing(this); // add physics body to scene
@@ -22,7 +22,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     const offsetY = 16;
     this.body.setOffset(offsetX, offsetY);
 
-    this.setGravityY(100);
+    this.setGravityY(300);
 
     this.scene.playerFSM = new StateMachine(
       "idle",
@@ -46,11 +46,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     scene.anims.create({
       key: "walk",
-      frameRate: 8,
+      frameRate: 15,
       repeat: -1,
       frames: this.anims.generateFrameNumbers("character", {
         start: 0,
-        end: 7,
+        end: 4,
       }),
     });
 
